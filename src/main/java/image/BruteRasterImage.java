@@ -23,6 +23,16 @@ public class BruteRasterImage implements Image {
         this.pixels = colors.clone();
     }
 
+    public void createRepresentation()
+    {
+        for(int i = 0; i<this.pixels.length;i++)
+        {
+            for(int j = 0;j<this.pixels[i].length;j++)
+                System.out.print(this.pixels[i][j]);
+            System.out.println(" ");
+        }
+    }
+
     public void setPixelColor(Color color, int x, int y)
     {
         pixels[x][y] = color;
