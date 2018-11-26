@@ -68,4 +68,6 @@ public class BruteRasterImage extends RasterImage {
 
         this.pixels = colors;
     }
+
+
 }

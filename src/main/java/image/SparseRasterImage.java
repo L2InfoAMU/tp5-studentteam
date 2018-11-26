@@ -55,5 +55,30 @@ public class SparseRasterImage extends RasterImage {
 
     }
 
+    @Override
+    public void setPixelsColor(Color[][] colors)
+    {
+        pixelsMap.clear();
+        super.pixels = colors;
+        createRepresentation();
+    }
+
+    private void setPixelsColor(Color color)
+    {
+        new SparseRasterImage(color, width, height);
+    }
+
+    @Override
+    protected void setWidth(int width)
+    {
+        super.width = width;
+    }
+
+    @Override
+    protected void setHeight(int height)
+    {
+        super.height = height;
+    }
+
 
 }
