@@ -14,6 +14,7 @@ public class PaletteRasterImage implements Image {
     {
         palette = new ArrayList<>();
         palette.add(color);
+        indexesOfColors = new byte[width][height];
         for(int i = 0 ; i<width;i++)
         {
             for(int j = 0 ; j < height ; j++)
@@ -25,6 +26,8 @@ public class PaletteRasterImage implements Image {
 
     public PaletteRasterImage(Color[][] pixels)
     {
+        palette = new ArrayList<>();
+        indexesOfColors = new byte[pixels.length][pixels[1].length];
         for(int i = 0 ; i<pixels.length;i++)
         {
             for(int j = 0 ; j<pixels[i].length;j++)
@@ -83,11 +86,37 @@ public class PaletteRasterImage implements Image {
 
     @Override
     public int getWidth() {
-        return 0;
+        return indexesOfColors.length;
     }
 
     @Override
     public int getHeight() {
-        return 0;
+        return indexesOfColors[1].length;
+    }
+
+    protected void setWidth(int width)
+    {
+        byte[][] indexColors = new byte[width][indexesOfColors[1].length];
+        for(int i = 0;i<width&&i<indexesOfColors.length;i++)
+        {
+            for(int j = 0; j<indexesOfColors[i].length;j++)
+            {
+                indexColors[i][j] = indexesOfColors[i][j];
+            }
+        }
+        this.indexesOfColors = indexColors.clone();
+    }
+
+    protected void setHeight(int height)
+    {
+        byte[][]indexColors = new byte[indexesOfColors.length][height];
+        for(int i = 0;i<indexesOfColors.length;i++)
+        {
+            for(int j = 0; j<height && j<indexesOfColors[i].length;j++)
+            {
+                indexColors[i][j] = indexesOfColors[i][j];
+            }
+        }
+        this.indexesOfColors = indexColors.clone();
     }
 }
