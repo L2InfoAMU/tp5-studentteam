@@ -68,6 +68,19 @@ public class PaletteRasterImage implements Image {
         }
     }
 
+    private void setPixelsColor(Color color)
+    {
+        if(!palette.contains(color))
+            palette.add(color);
+        for(int i = 0 ; i<indexesOfColors.length ; i++)
+        {
+            for(int j = 0 ; j<indexesOfColors[i].length;j++)
+            {
+                indexesOfColors[i][j] = (byte)palette.indexOf(color);
+            }
+        }
+    }
+
     @Override
     public int getWidth() {
         return 0;
