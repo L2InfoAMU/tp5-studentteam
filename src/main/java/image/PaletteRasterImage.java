@@ -30,6 +30,7 @@ public class PaletteRasterImage implements Image {
         palette = new ArrayList<>();
         this.pixels = pixels;
         indexesOfColors = new byte[pixels.length][pixels[1].length];
+        createRepresentation();
     }
 
     public void createRepresentation()
