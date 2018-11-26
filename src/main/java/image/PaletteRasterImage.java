@@ -5,14 +5,14 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaletteRasterImage implements Image {
+public class PaletteRasterImage extends RasterImage {
 
     List<Color> palette;
-    Color[][] pixels;
     byte[][] indexesOfColors;
 
     public PaletteRasterImage(Color color, int width, int height)
     {
+        super(width, height, color);
         palette = new ArrayList<>();
         palette.add(color);
         indexesOfColors = new byte[width][height];
@@ -27,29 +27,31 @@ public class PaletteRasterImage implements Image {
 
     public PaletteRasterImage(Color[][] pixels)
     {
+        super(pixels);
         palette = new ArrayList<>();
-        this.pixels = pixels;
         indexesOfColors = new byte[pixels.length][pixels[1].length];
         createRepresentation();
     }
 
     public void createRepresentation()
     {
-        for(int i = 0 ; i<pixels.length;i++)
+        for(int i = 0 ; i<super.getWidth();i++)
         {
-            for(int j = 0 ; j<pixels[i].length;j++)
+            for(int j = 0 ; j<super.getHeight();j++)
             {
-                if(!palette.contains(pixels[i][j]))
+                if(!palette.contains(super.pixels[i][j]))
                 {
-                    palette.add(pixels[i][j]);
+                    palette.add(super.pixels[i][j]);
                 }
-                indexesOfColors[i][j] = (byte)palette.indexOf(pixels[i][j]);
+                indexesOfColors[i][j] = (byte)palette.indexOf(super.pixels[i][j]);
             }
         }
     }
 
+    @Override
     public void setPixelColor(Color color, int x, int y)
     {
+        super.setPixelColor(color, x, y);
         if(!palette.contains(color))
         {
             palette.add(color);
@@ -89,16 +91,6 @@ public class PaletteRasterImage implements Image {
                 indexesOfColors[i][j] = (byte)palette.indexOf(color);
             }
         }
-    }
-
-    @Override
-    public int getWidth() {
-        return indexesOfColors.length;
-    }
-
-    @Override
-    public int getHeight() {
-        return indexesOfColors[1].length;
     }
 
     protected void setWidth(int width)

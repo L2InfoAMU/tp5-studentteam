@@ -2,25 +2,19 @@ package image;
 
 import javafx.scene.paint.Color;
 
-public class BruteRasterImage implements Image {
+public class BruteRasterImage extends RasterImage {
 
     Color [][] pixels;
 
     public BruteRasterImage(Color color, int width, int height)
     {
-        pixels = new Color[width][height];
-        for(int i = 0;i<width;i++)
-        {
-            for(int j = 0; j<height;j++)
-            {
-                pixels[i][j] = color;
-            }
-        }
+        super(width, height, color);
+
     }
 
     public BruteRasterImage(Color [][] colors)
     {
-        this.pixels = colors.clone();
+        super(colors);
     }
 
     public void createRepresentation()
@@ -33,59 +27,45 @@ public class BruteRasterImage implements Image {
         }
     }
 
-    public void setPixelColor(Color color, int x, int y)
-    {
-        pixels[x][y] = color;
-    }
 
     @Override
     public Color getPixelColor(int x, int y) {
-        return pixels[x][y];
+        return super.pixels[x][y];
     }
 
     public void setPixelsColor(Color[][] color)
     {
-        this.pixels = color.clone();
+        super.pixels = color;
     }
 
     private void setPixelsColor(Color color)
     {
-        for(int i = 0; i < pixels.length;i++)
-            for(int j = 0 ; j< pixels[i].length;j++)
+        for(int i = 0; i < width;i++)
+            for(int j = 0 ; j< height;j++)
                 pixels[i][j] = color;
-    }
-
-    @Override
-    public int getWidth() {
-        return pixels.length;
-    }
-
-    @Override
-    public int getHeight() {
-        return pixels[1].length;
     }
 
     protected void setWidth(int width)
     {
-        Color[][] colors = new Color[width][this.pixels[1].length];
-        for(int i = 0 ; i<width && i<this.pixels.length ; i++)
+        Color[][] colors = new Color[width][this.height];
+        for(int i = 0 ; i<width && i<this.width ; i++)
         {
-            for(int j = 0 ; j<this.pixels[i].length;j++)
+            for(int j = 0 ; j<this.height;j++)
                 colors[i][j] = this.pixels[i][j];
         }
 
-        this.pixels = colors.clone();
+        this.pixels = colors;
     }
 
     protected void setHeight(int height)
     {
-        Color[][] colors = new Color[this.pixels.length][height];
-        for(int i = 0 ; i<this.pixels.length;i++)
+        Color[][] colors = new Color[this.width][height];
+        for(int i = 0 ; i<this.width;i++)
         {
-            for(int j = 0; j<height && j<this.pixels[j].length;j++)
+            for(int j = 0; j<height && j<this.height;j++)
                 colors[i][j] = this.pixels[i][j];
         }
 
-        this.pixels = colors.clone();
+        this.pixels = colors;
     }
 }
