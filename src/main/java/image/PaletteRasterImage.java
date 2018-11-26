@@ -8,6 +8,7 @@ import java.util.List;
 public class PaletteRasterImage implements Image {
 
     List<Color> palette;
+    Color[][] pixels;
     byte[][] indexesOfColors;
 
     public PaletteRasterImage(Color color, int width, int height)
@@ -27,7 +28,12 @@ public class PaletteRasterImage implements Image {
     public PaletteRasterImage(Color[][] pixels)
     {
         palette = new ArrayList<>();
+        this.pixels = pixels;
         indexesOfColors = new byte[pixels.length][pixels[1].length];
+    }
+
+    public void createRepresentation()
+    {
         for(int i = 0 ; i<pixels.length;i++)
         {
             for(int j = 0 ; j<pixels[i].length;j++)
