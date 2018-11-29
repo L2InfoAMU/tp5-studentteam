@@ -19,9 +19,13 @@ public class VectorImage implements Image{
 
     @Override
     public Color getPixelColor(int x, int y) {
-        for(Shape shape : shapes)
-            if(shape.contains(new Point(x, y)))
-                return shape.getColor();
+        for(int i = 0 ; i<shapes.size();i++)
+        {
+            if(shapes.get(i).contains(new Point(x, y)))
+            {
+                return shapes.get(i).getColor();
+            }
+        }
 
         return Color.WHITE;
     }
@@ -36,12 +40,12 @@ public class VectorImage implements Image{
         return height;
     }
 
-    protected void setWidth()
+    protected void setWidth(int width)
     {
         this.width = width;
     }
 
-    protected void setHeight()
+    protected void setHeight(int height)
     {
         this.height = height;
     }
