@@ -64,17 +64,5 @@ public class SparseRasterImage extends RasterImage {
         new SparseRasterImage(color, width, height);
     }
 
-    @Override
-    protected void setWidth(int width)
-    {
-        super.width = width;
-    }
-
-    @Override
-    protected void setHeight(int height)
-    {
-        super.height = height;
-    }
-
 
 }
