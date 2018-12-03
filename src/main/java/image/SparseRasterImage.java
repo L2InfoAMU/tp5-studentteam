@@ -47,11 +47,7 @@ public class SparseRasterImage extends RasterImage {
     @Override
     public Color getPixelColor(int x, int y)
     {
-
-        if(pixelsMap.containsKey(new Point(x, y)))
-            return pixelsMap.get(new Point(x, y));
-        else
-            return Color.WHITE;
+        return pixelsMap.getOrDefault(new Point(x, y), Color.WHITE);
 
     }
 

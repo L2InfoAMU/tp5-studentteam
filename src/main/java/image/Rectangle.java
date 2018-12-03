@@ -7,14 +7,14 @@ import java.util.List;
 
 public class Rectangle implements Shape {
 
-    Point downLeft;
+    Point upperLeft;
     int width;
     int height;
     Color color;
 
     public Rectangle(int x, int y, int width, int height, Color color)
     {
-        this.downLeft = new Point(x, y);
+        this.upperLeft = new Point(x, y);
         this.width = width;
         this.height = height;
         this.color = color;
@@ -22,8 +22,8 @@ public class Rectangle implements Shape {
 
     @Override
     public boolean contains(Point point) {
-        return point.x>=downLeft.x && point.x<downLeft.x+(width-1) &&
-                point.y>=downLeft.y && point.y<=downLeft.y+(height-1);
+        return point.x>=upperLeft.x && point.x<=upperLeft.x+(width-1) &&
+                point.y>=upperLeft.y && point.y<=upperLeft.y+(height-1);
     }
 
     @Override

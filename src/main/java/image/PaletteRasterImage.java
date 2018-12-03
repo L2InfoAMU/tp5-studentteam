@@ -35,6 +35,7 @@ public class PaletteRasterImage extends RasterImage {
 
     public void createRepresentation()
     {
+        super.createRepresentation();
         for(int i = 0 ; i<super.getWidth();i++)
         {
             for(int j = 0 ; j<super.getHeight();j++)
@@ -69,6 +70,7 @@ public class PaletteRasterImage extends RasterImage {
 
     public void setPixelsColor(Color[][] pixels)
     {
+        super.setPixelsColor(pixels);
         for(int i = 0 ; i<pixels.length && i<indexesOfColors.length;i++)
         {
             for(int j = 0 ; j<pixels[i].length && j < indexesOfColors[i].length;j++)
@@ -95,6 +97,7 @@ public class PaletteRasterImage extends RasterImage {
 
     protected void setWidth(int width)
     {
+        super.setWidth(width);
         byte[][] indexColors = new byte[width][indexesOfColors[1].length];
         for(int i = 0;i<width&&i<indexesOfColors.length;i++)
         {
@@ -108,6 +111,7 @@ public class PaletteRasterImage extends RasterImage {
 
     protected void setHeight(int height)
     {
+        super.setHeight(height);
         byte[][]indexColors = new byte[indexesOfColors.length][height];
         for(int i = 0;i<indexesOfColors.length;i++)
         {
