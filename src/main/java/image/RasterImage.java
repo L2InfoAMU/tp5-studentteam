@@ -57,6 +57,9 @@ public abstract class RasterImage implements Image{
         this.pixels = colors;
     }
 
+    /**
+     * Create representation of matrix
+     */
     public void createRepresentation()
     {
         for(int i = 0 ; i<width;i++)
@@ -67,25 +70,58 @@ public abstract class RasterImage implements Image{
             }
         }
     }
+
+    /**
+     * set color color to point (x, y)
+     * @param color
+     * @param x
+     * @param y
+     */
     public void setPixelColor(Color color, int x, int y){
         pixels[x][y] = color;
     }
+
+    /**
+     * @param x
+     * @param y
+     * @return color of pixels
+     */
     public Color getPixelColor(int x, int y)
     {
         return pixels[x][y];
     }
+
+    /**
+     * set pixels matrix to matrix color
+     * @param color
+     */
     public void setPixelsColor(Color[][] color)
     {
         this.pixels = color;
     }
+
+    /**
+     *
+     * @return width of matrix
+     */
     public int getWidth()
     {
         return width;
     }
+
+    /**
+     *
+     * @return height of matrix
+     */
     public int getHeight()
     {
         return height;
     }
+
+    /**
+     * set width of matrix to width
+     * @param width
+     */
     protected void setWidth(int width)
     {
         Color[][] colors = new Color[width][this.height];
@@ -97,6 +133,11 @@ public abstract class RasterImage implements Image{
 
         this.pixels = colors;
     }
+
+    /**
+     * set height of matrix to height
+     * @param height
+     */
     protected void setHeight(int height)
     {
         Color[][] colors = new Color[this.width][height];

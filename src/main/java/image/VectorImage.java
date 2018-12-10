@@ -10,6 +10,11 @@ public class VectorImage extends RasterImage implements Image{
         super(shapes, width, height);
     }
 
+    /**
+     * @param x
+     * @param y
+     * @return pixels color at coordinate (x, y)
+     */
     @Override
     public Color getPixelColor(int x, int y) {
         for(Shape shape : shapes)

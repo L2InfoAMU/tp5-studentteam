@@ -20,12 +20,21 @@ public class Rectangle implements Shape {
         this.color = color;
     }
 
+    /**
+     *
+     * @param point
+     * @return true if point is contain in rectangle, false otherwise
+     */
     @Override
     public boolean contains(Point point) {
         return point.x>=upperLeft.x && point.x<=upperLeft.x+(width-1) &&
                 point.y>=upperLeft.y && point.y<=upperLeft.y+(height-1);
     }
 
+    /**
+     *
+     * @return rectangle color
+     */
     @Override
     public Color getColor() {
         return color;

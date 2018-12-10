@@ -15,6 +15,10 @@ public class Triangle implements Shape {
         this.color = color;
     }
 
+    /**
+     * @param point
+     * @return true if point is contain in triangle, false otherwise
+     */
     @Override
     public boolean contains(Point point) {
         Point A = new Point(this.point.x, this.point.y-height);
@@ -26,6 +30,9 @@ public class Triangle implements Shape {
         return areaOAP+areaOPB+areaPAB == areaTriangle;
     }
 
+    /**
+     * @return triangle color
+     */
     @Override
     public Color getColor() {
         return color;

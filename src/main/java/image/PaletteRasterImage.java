@@ -49,6 +49,13 @@ public class PaletteRasterImage extends RasterImage {
         }
     }
 
+
+    /**
+     * set color of color in coordinate (x, y)
+     * @param color
+     * @param x
+     * @param y
+     */
     @Override
     public void setPixelColor(Color color, int x, int y)
     {
@@ -63,11 +70,21 @@ public class PaletteRasterImage extends RasterImage {
         }
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @return color of point (x, y).
+     */
     @Override
     public Color getPixelColor(int x, int y) {
         return palette.get(indexesOfColors[x][y]);
     }
 
+    /**
+     * update current matrix with matrix pixels
+     * @param pixels
+     */
     public void setPixelsColor(Color[][] pixels)
     {
         super.setPixelsColor(pixels);
@@ -82,6 +99,10 @@ public class PaletteRasterImage extends RasterImage {
         }
     }
 
+    /**
+     * set color color for all pixels
+     * @param color
+     */
     private void setPixelsColor(Color color)
     {
         if(!palette.contains(color))
@@ -95,6 +116,10 @@ public class PaletteRasterImage extends RasterImage {
         }
     }
 
+    /**
+     * set width of matrix
+     * @param width
+     */
     protected void setWidth(int width)
     {
         super.setWidth(width);
@@ -109,6 +134,10 @@ public class PaletteRasterImage extends RasterImage {
         this.indexesOfColors = indexColors.clone();
     }
 
+    /**
+     * set height of matrix
+     * @param height
+     */
     protected void setHeight(int height)
     {
         super.setHeight(height);

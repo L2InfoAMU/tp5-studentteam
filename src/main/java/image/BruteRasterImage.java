@@ -17,6 +17,10 @@ public class BruteRasterImage extends RasterImage {
         super(colors);
     }
 
+    /**
+     * set color of all pixels to color
+     * @param color
+     */
     private void setPixelsColor(Color color)
     {
         for(int i = 0; i < width;i++)

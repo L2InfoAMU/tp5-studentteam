@@ -23,6 +23,9 @@ public class SparseRasterImage extends RasterImage {
         createRepresentation();
     }
 
+    /**
+     * create representation of this matrix
+     */
     @Override
     public void createRepresentation()
     {
@@ -36,6 +39,12 @@ public class SparseRasterImage extends RasterImage {
         }
     }
 
+    /**
+     * set color pixels at coordinate (x, y) to color
+     * @param color
+     * @param x
+     * @param y
+     */
     @Override
     public void setPixelColor(Color color, int x, int y)
     {
@@ -44,6 +53,11 @@ public class SparseRasterImage extends RasterImage {
         createRepresentation();
     }
 
+    /**
+     * @param x
+     * @param y
+     * @return color of pixels at coordinate (x, y)
+     */
     @Override
     public Color getPixelColor(int x, int y)
     {
@@ -51,6 +65,10 @@ public class SparseRasterImage extends RasterImage {
 
     }
 
+    /**
+     * update pixels matrix with colors matrix
+     * @param colors
+     */
     @Override
     public void setPixelsColor(Color[][] colors)
     {
@@ -59,6 +77,10 @@ public class SparseRasterImage extends RasterImage {
         createRepresentation();
     }
 
+    /**
+     * set Color of all pixels in matrix to color
+     * @param color
+     */
     private void setPixelsColor(Color color)
     {
         new SparseRasterImage(color, width, height);
